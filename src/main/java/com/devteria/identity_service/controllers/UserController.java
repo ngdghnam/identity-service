@@ -1,5 +1,6 @@
 package com.devteria.identity_service.controllers;
 
+import com.devteria.identity_service.dto.requests.ApiRespone;
 import com.devteria.identity_service.dto.requests.UserCreationRequest;
 import com.devteria.identity_service.dto.requests.UserUpdateRequest;
 import com.devteria.identity_service.entities.User;
@@ -17,12 +18,15 @@ public class UserController {
     private UserService userService;
 
     @PostMapping
-    User createUser(@RequestBody @Valid UserCreationRequest request) {
-        return userService.createUser(request);
+    ApiRespone<User> createUser(@RequestBody @Valid UserCreationRequest request) {
+        ApiRespone<User> response = new ApiRespone<>();
+        response.setResult(userService.createUser(request));
+
+        return response;
     }
 
     @GetMapping
-    List<User> getAllUsers() {
+    List<User> getAllUsers() {  
         return userService.getAllUsers();
     }
 
@@ -31,7 +35,7 @@ public class UserController {
         return userService.getUserById(userId);
     }
 
-    @PutMapping("{userId}")
+    @PutMapping("/{userId}")
     User updateUser(@PathVariable("userId") String userId, @RequestBody UserUpdateRequest request) {
         return userService.updateUser(userId, request);
     }
