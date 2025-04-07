@@ -1,6 +1,6 @@
 package com.devteria.identity_service.controllers;
 
-import com.devteria.identity_service.dto.requests.ApiRespone;
+import com.devteria.identity_service.dto.requests.ApiResponse;
 import com.devteria.identity_service.dto.requests.UserCreationRequest;
 import com.devteria.identity_service.dto.requests.UserUpdateRequest;
 import com.devteria.identity_service.entities.User;
@@ -18,8 +18,8 @@ public class UserController {
     private UserService userService;
 
     @PostMapping
-    ApiRespone<User> createUser(@RequestBody @Valid UserCreationRequest request) {
-        ApiRespone<User> response = new ApiRespone<>();
+    ApiResponse<User> createUser(@RequestBody @Valid UserCreationRequest request) {
+        ApiResponse<User> response = new ApiResponse<>();
         response.setResult(userService.createUser(request));
 
         return response;
