@@ -1,7 +1,7 @@
 package com.devteria.identity_service.exception;
 
 public enum ErrorCode {
-    INVALID_KEY(0001, "Invalid message key"),
+    INVALID_KEY(0001, "Invalid messagex key"),
     UNCATEGORIZED_EXISTED(1001, "Uncategorized error"),
     USER_EXISTED(1001, "User existed"),
     USERNAME_INVALID(1003, "Username at least 3 characters"),
